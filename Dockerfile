@@ -13,7 +13,7 @@ RUN set -x; \
 		python-pip \
 		libxrender-dev \
 		fontconfig \
-		vi
+		vim
 		
 # Install wkhtmltopdf
 COPY ./wkhtmltopdf /usr/bin/wkhtmltopdf
