@@ -8,7 +8,7 @@ RUN apt-get update
 RUN set -x; \
 	apt-get install -y --no-install-recommends \ 
 		node-less \
-		node-clean-less \
+		node-clean-css \
 		python-dev \
 		python-pip \
 		libxrender-dev \
