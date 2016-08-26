@@ -13,7 +13,8 @@ RUN set -x; \
 		python-pip \
 		libxrender-dev \
 		fontconfig \
-		vim
+		vim \
+		curl 
 		
 # Install wkhtmltopdf
 COPY ./wkhtmltopdf /usr/bin/wkhtmltopdf
@@ -25,9 +26,12 @@ RUN pip install -U pip
 RUN /usr/local/bin/pip install psycogreen==1.0 gevent
 
 # Install Odoo
-COPY ./odoo_9.0c.20160826_all.deb /odoo.deb
+# COPY ./odoo_9.0c.20160826_all.deb /odoo.deb
+ENV ODOO_VERSION 9.0
+ENV ODOO_RELEASE 20160826
 RUN set -x; \
-	dpkg --force-depends -i odoo.deb \
+	curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}c.${ODOO_RELEASE}_all.deb \
+		&& dpkg --force-depends -i odoo.deb \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb
 
