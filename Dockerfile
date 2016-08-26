@@ -6,7 +6,7 @@ COPY ./sources.list /etc/apt/sources.list
 RUN apt-get update
 
 RUN set -x; \
-	&& apt-get install -y --no-install-recommends \ 
+	apt-get install -y --no-install-recommends \ 
 		node-less \
 		node-clean-less \
 		python-dev \
